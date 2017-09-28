@@ -6,11 +6,15 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="import" href="../bower_components/polymer/polymer-element.html">
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/vaadin-board/vaadin-board.html">
 <link rel="import" href="../bower_components/vaadin-grid/all-imports.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/vaadin-charts/vaadin-column-chart.html">
+<link rel="import" href="../bower_components/vaadin-charts/vaadin-bar-chart.html">
+<link rel="import" href="../bower_components/vaadin-charts/vaadin-heatmap-chart.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-dashboard">
@@ -47,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <chart-title>Days since last support ticket filed</chart-title>
 <!--  <subtitle>accounts</subtitle> -->
   <x-axis>
-    <categories>GAP, Coca-Cola, Adibas, Disney</categories>
+    <categories>GAP, Coca-Cola, Adibas, Disney, Account1, Account2, Account3</categories>
   </x-axis>
   <y-axis>
     <chart-title>No. of days</chart-title>
@@ -55,14 +59,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <tooltip point-format="{point.y} days"></tooltip>
 
   <data-series name="days">
-    <data>1, 7, 3, 4</data>
+    <data>1, 7, 3, 4, 2, 5, 2</data>
   </data-series>
 </vaadin-column-chart></div>
         <div class="item" style="height:600px;"><vaadin-column-chart>
   <chart-title>Days inactive in Expert Chat</chart-title>
 <!--  <subtitle>accounts</subtitle> -->
   <x-axis>
-    <categories>GAP, Coca-Cola, Adibas, Disney</categories>
+    <categories>GAP, Coca-Cola, Adibas, Disney, Account1, Account2, Account3</categories>
   </x-axis>
   <y-axis>
     <chart-title>No. of days</chart-title>
@@ -70,38 +74,98 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <tooltip point-format="{point.y} days"></tooltip>
 
   <data-series name="days">
-    <data>1, 3, 2, 12</data>
+    <data>1, 3, 2, 12, 7, 5, 13</data>
   </data-series>
 </vaadin-column-chart></div>
       </vaadin-board-row>
+      <vaadin-board-row>
+        <div class="item" style="height:600px;"><vaadin-heatmap-chart id="heat-map">
+          <chart-title>Most popular PRO tools</chart-title>
+          <x-axis>
+            <categories>GAP, Coca-Cola, Adibas, Disney, Account1, Account2, Account3</categories>
+          </x-axis>
+          <y-axis title>
+            <categories>TestBench, Designer, Charts, Board, Spreadsheet</categories>
+          </y-axis>
+          <color-axis min="0" min-color="#00b4f0" max-color="#ff3a49"></color-axis>
+          <legend align="right" layout="vertical" margin="0" vertical-align="top" y="25" symbol-height="280"></legend>
+          <plot-options>
+            <heatmap>
+              <data-labels enabled="true" color="#000000"></data-labels>
+            </heatmap>
+          </plot-options>
+          <data-series name="Days since last compile">
+            <data>
+              [0, 0, 365], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 365], [1, 0, 92], [1, 1, 365], [1, 2, 78], [1, 3, 0],
+              [1, 4, 48], [2, 0, 0], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [3, 0, 72], [3, 1, 132], [3, 2,
+              114], [3, 3, 365], [3, 4, 16], [4, 0, 365], [4, 1, 0], [4, 2, 8], [4, 3, 117], [4, 4, 115], [5, 0, 88], [5, 1,
+              32], [5, 2, 12], [5, 3, 6], [5, 4, 0], [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 365], [6, 4, 96]
+            </data>
+          </data-series>
+        </vaadin-heatmap-chart></div>
+        <div class="item" style="height:600px;"><vaadin-bar-chart id="basic-bar">
+          <chart-title>PRO un-used</chart-title>
+          <subtitle>(Accounts who haven't used a single PRO tool in 30 days)</subtitle>
+          <x-axis>
+            <categories>GAP, Disney, Account3</categories>
+            <chart-title></chart-title>
+          </x-axis>
+          <y-axis min="0">
+            <chart-title align="high">Days since last compile</chart-title>
+            <labels overflow="justify"></labels>
+          </y-axis>
+          <tooltip value-suffix=" days"></tooltip>
+          <plot-options>
+            <bar>
+              <data-labels enabled="true"></data-labels>
+            </bar>
+          </plot-options>
+          <legend layout="vertical" align="right" vertical-align="top" x="-40" y="80" floating="true" border-width="1" background-color="#FFFFFF" shadow="true"></legend>
+          <data-series name="TestBench">
+            <data>57, 365, 30</data>
+          </data-series>
+          <data-series name="Designer">
+            <data>67, 365, 127</data>
+          </data-series>
+          <data-series name="Charts">
+            <data>57, 32, 30</data>
+          </data-series>
+          <data-series name="Board">
+            <data>365, 365, 30</data>
+          </data-series>
+          <data-series name="Spreadsheet">
+            <data>57, 365, 365</data>
+          </data-series>
+        </vaadin-bar-chart></div>
+      </vaadin-board-row>
     </vaadin-board>
-
-    <vaadin-grid items="
-          [{&quot;account&quot;: &quot;GAP&quot;, &quot;title&quot;: &quot;Polymer 2 borken&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;today&quot;},
-          {&quot;account&quot;: &quot;Adibas&quot;, &quot;title&quot;: &quot;Upgrade woes&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;yesterday&quot;},
-          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;},
-          {&quot;account&quot;: &quot;Pepsi&quot;, &quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;},
-          {&quot;account&quot;: &quot;GAP&quot;, &quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;},
-          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;},
-          {&quot;account&quot;: &quot;Pepsi&quot;, &quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;},
-          {&quot;account&quot;: &quot;GAP&quot;, &quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;},
-          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;},
-          {&quot;account&quot;: &quot;Pepsi&quot;, &quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;},
-          {&quot;account&quot;: &quot;GAP&quot;, &quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;},
-          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;},
-          {&quot;account&quot;: &quot;Pepsi&quot;, &quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;},
-          {&quot;account&quot;: &quot;GAP&quot;, &quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;},
-          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;title&quot;: &quot;You rock!&quot;, &quot;status&quot;: &quot;estimate approved&quot;, &quot;updated&quot;: &quot;tomorrow&quot;}]
-          ">
+<!-- support ticket view disabled, not needed for CSM
+    <vaadin-grid items='
+          [{"account": "GAP", "title": "Polymer 2 borken", "status": "waiting for estimate approval", "updated": "today"},
+          {"account": "Adibas", "title": "Upgrade woes", "status": "new", "updated": "yesterday"},
+          {"account": "Coca-Cola", "title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days"},
+          {"account": "Pepsi", "title": "Too much cash", "status": "waiting for details", "updated": "3 days"},
+          {"account": "GAP", "title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks"},
+          {"account": "Coca-Cola", "title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days"},
+          {"account": "Pepsi", "title": "Too much cash", "status": "waiting for details", "updated": "3 days"},
+          {"account": "GAP", "title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks"},
+          {"account": "Coca-Cola", "title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days"},
+          {"account": "Pepsi", "title": "Too much cash", "status": "waiting for details", "updated": "3 days"},
+          {"account": "GAP", "title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks"},
+          {"account": "Coca-Cola", "title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days"},
+          {"account": "Pepsi", "title": "Too much cash", "status": "waiting for details", "updated": "3 days"},
+          {"account": "GAP", "title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks"},
+          {"account": "Coca-Cola", "title": "You rock!", "status": "estimate approved", "updated": "tomorrow"}]
+          '>
       <template class="row-details">
         <div class="details">
-          <p>Hello John,<br>
-We use the Java EE-CDI framework.<br>
-Yes, we want the jobs to be persistent so we can see status as you described (ie see status of email if server goes down).<br>
-If you are refereeing to a 'live' demo, that's fine. Instructions on how to use it will be fine for now.<br>
-<br>
-Thanks<br>
-<br>
+          <p>Hello John,<br/>
+We use the Java EE-CDI framework.<br/>
+Yes, we want the jobs to be persistent so we can see status as you described (ie see status of email if server goes down).<br/>
+If you are refereeing to a 'live' demo, that's fine. Instructions on how to use it will be fine for now.<br/>
+<br/>
+Thanks<br/>
+<br/>
 Becky</p>
         </div>
       </template>
@@ -128,7 +192,7 @@ Becky</p>
         <template class="header">Latest Update</template>
         <template>[[item.updated]]</template>
       </vaadin-grid-column>
-    </vaadin-grid>
+    </vaadin-grid> -->
   </template>
 
   <script>

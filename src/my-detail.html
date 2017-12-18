@@ -1,0 +1,249 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/vaadin-board/vaadin-board.html">
+<link rel="import" href="../bower_components/vaadin-grid/all-imports.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/vaadin-charts/vaadin-column-chart.html">
+<link rel="import" href="../bower_components/vaadin-charts/vaadin-heatmap-chart.html">
+<link rel="import" href="shared-styles.html">
+<dom-module id="my-detail">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .item {
+          display: block;
+          margin-left: 0;
+          margin-right: 0;
+          font-weight: 100;
+          border-style: solid;
+          border-width: 2px;
+          border-color: #D1DaDe;
+          text-align: center;
+          background-color: #FAFBFC;
+      }
+    </style>
+
+    <vaadin-board>
+      <vaadin-board-row>
+        <div class="item" style="height:150px;">Selected Subscription<br><br><b style="font-size: 32px;">Adibas</b><br>Prime</div>
+        <div class="item" style="height:150px;">Subscription period<br><br>18 Jan 2017 - <br><b>18 Jan 2018</b></div>
+        <div class="item" style="height:150px;">Last contacted<br><br><li>17 days ago</li></div>
+        <div class="item" style="height:150px; background-color:yellow"><b>Health</b><br><br>Yellow</div>
+      </vaadin-board-row>
+      <vaadin-board-row>
+        <div class="item" style="height:150px;"><br><br><b style="font-size: 32px;">Licenses</b></div>
+        <div class="item" style="height:150px;"><br><b>Pro Subscription Seats</b><br><br>3 / 5 seats used</div>
+        <div class="item" style="height:150px;"><br><b>Last license server ping</b><br><br><li>3 days ago</li></div>
+        <div class="item" style="height:150px;">&nbsp;</div>
+      </vaadin-board-row>
+      <vaadin-board-row>
+        <div class="item" style="height:300px;" board-cols="1">&nbsp;</div>
+        <div class="item" style="height:300px;" board-cols="3"><vaadin-heatmap-chart id="heat-map">
+          <chart-title>License utilisation</chart-title>
+          <x-axis>
+            <categories>TestBench, Designer, Charts, Board, Spreadsheet</categories>
+          </x-axis>
+          <y-axis title="">
+            <categories>mark.wallace@company.com, john.smith@company.com, steve.jobs@company.com</categories>
+          </y-axis>
+          <color-axis min="0" min-color="#00b4f0" max-color="#ff3a49"></color-axis>
+          <legend align="right" layout="vertical" margin="0" vertical-align="top" y="25" symbol-height="280"></legend>
+          <plot-options>
+            <heatmap>
+              <data-labels enabled="true" color="#000000"></data-labels>
+              <tooltip>
+                <point-format>Last license server ping on 2017-10-23</point-format>
+              </tooltip>
+            </heatmap>
+          </plot-options>
+          <data-series name="Days since last compile">
+            <data>
+              [0, 0, 365], [0, 1, 19], [0, 2, 8], [1, 0, 92], [1, 1, 365], [1, 2, 78], [2, 0, 0], [2, 1, 15], [2, 2, 123], [3, 0, 72], [3, 1, 132], [3, 2,
+              114], [4, 0, 365], [4, 1, 0], [4, 2, 8]
+            </data>
+          </data-series>
+        </vaadin-heatmap-chart></div>
+      </vaadin-board-row>
+      <vaadin-board-row>
+        <div class="item" style="height:150px;"><br><br><b style="font-size: 32px;">Prime</b></div>
+        <div class="item" style="height:150px;"><b>Average Ratings</b><br><br>Expert Chat :-)<br>On-Demand 3.5/5</div>
+        <div class="item" style="height:150px;"><b>On-demand hours</b><br><br>15 hours used<br>35 hours remaining</div>
+        <div class="item" style="height:150px;"><b>Warranty</b><br><br>Vaadin Framework<br>Issue <a href="https://github.com/vaadin/framework/issues/10232">#10232</a><br>Voted on: 2017-09-10</div>
+      </vaadin-board-row>
+      <vaadin-board-row>
+        <div class="item" style="height:300px;"><!--<vaadin-column-chart>
+  <chart-title>Expert Chat usage</chart-title>
+  <x-axis>
+    <categories>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</categories>
+  </x-axis>
+  <y-axis>
+    <chart-title>No. of conversations</chart-title>
+  </y-axis>
+  <tooltip point-format="{point.y} conversations"></tooltip>
+
+  <data-series name="conversations">
+    <data>4, 7, 3, 1, 0, 0, 1, 0, 4, 7, 0, 0</data>
+  </data-series>
+</vaadin-column-chart> --><vaadin-heatmap-chart id="heat-map">
+  <chart-title>Expert Chat usage</chart-title>
+  <subtitle>Number of conversations</subtitle>
+  <x-axis>
+    <categories>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</categories>
+  </x-axis>
+  <y-axis title="">
+    <categories>mark.wallace@company.com, john.smith@company.com, steve.jobs@company.com</categories>
+  </y-axis>
+  <color-axis min="0" min-color="#ff3a49" max-color="#00b4f0"></color-axis>
+  <legend align="right" layout="vertical" margin="0" vertical-align="top" y="25" symbol-height="280"></legend>
+  <plot-options>
+    <heatmap>
+      <data-labels enabled="true" color="#000000"></data-labels>
+    </heatmap>
+  </plot-options>
+  <data-series name="Number of conversations">
+    <data>
+      [0, 0, 0], [0, 1, 2], [0, 2, 3], [1, 0, 1], [1, 1, 5], [1, 2, 2], [2, 0, 0], [2, 1, 1], [2, 2, 3], [3, 0, 1], [3, 1, 4], [3, 2,
+      0], [4, 0, 2], [4, 1, 0], [4, 2, 2], [5, 0, 1], [5, 1, 2], [5, 2, 3], [6, 0, 3], [6, 1, 3], [6, 2, 0], [7, 0, 0], [7, 1, 0], [7, 2, 0], [8, 0, 1], [8, 1, 2], [8, 2, 1], [9, 0, 0], [9, 1, 0], [9, 2, 3], [10, 0, 1], [10, 1, 0], [10, 2, 3], [11, 0, 2], [11, 1, 0], [11, 2, 3]
+    </data>
+  </data-series>
+</vaadin-heatmap-chart></div>
+
+
+
+        <div class="item" style="height:300px;"><vaadin-column-chart>
+  <chart-title>On-demand hours used</chart-title>
+  <subtitle>Number hours used / month</subtitle>
+  <x-axis>
+    <categories>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</categories>
+  </x-axis>
+  <y-axis>
+    <chart-title>No. of days</chart-title>
+  </y-axis>
+  <tooltip point-format="{point.y} hours"></tooltip>
+
+  <data-series name="hours">
+    <data>1, 3, 2, 12, 1, 3, 2, 12, 1, 3, 2, 12</data>
+  </data-series>
+</vaadin-column-chart></div>
+      </vaadin-board-row>
+    </vaadin-board>
+
+    <vaadin-grid items="
+          [{&quot;title&quot;: &quot;Polymer 2 borken&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;today&quot;, &quot;hours&quot;: &quot;5 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
+          {&quot;title&quot;: &quot;Upgrade woes&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;yesterday&quot;, &quot;hours&quot;: &quot;3.5 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
+          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;0.2 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
+          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;0.5 h&quot;, &quot;rating&quot;: &quot;3/5&quot;},
+          {&quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;, &quot;hours&quot;: &quot;11 h&quot;, &quot;rating&quot;: &quot;2/5&quot;},
+          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;1 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
+          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;2 h&quot;, &quot;rating&quot;: &quot;4/5&quot;},
+          {&quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;, &quot;hours&quot;: &quot;3 h&quot;, &quot;rating&quot;: &quot;3/5&quot;},
+          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;5 h&quot;, &quot;rating&quot;: &quot;2/5&quot;},
+          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;4 h&quot;, &quot;rating&quot;: &quot;1/5&quot;}]
+          ">
+      <template class="row-details">
+        <div class="details">
+          <p>Hello John,<br>
+We use the Java EE-CDI framework.<br>
+Yes, we want the jobs to be persistent so we can see status as you described (ie see status of email if server goes down).<br>
+If you are refereeing to a 'live' demo, that's fine. Instructions on how to use it will be fine for now.<br>
+<br>
+Thanks<br>
+<br>
+Becky</p>
+        </div>
+      </template>
+
+      <vaadin-grid-column>
+        <template class="header">Support ticket title</template>
+        <template>[[item.title]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column width="20px">
+        <template class="header"></template>
+        <template>
+          <paper-checkbox aria-label$="Details" checked="{{expanded}}">Details</paper-checkbox>
+        </template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Status</template>
+        <template>[[item.status]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Latest Update</template>
+        <template>[[item.updated]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Hours Used</template>
+        <template>[[item.hours]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Rating</template>
+        <template>[[item.rating]]</template>
+      </vaadin-grid-column>
+    </vaadin-grid>
+
+  <vaadin-board>
+    <vaadin-board-row>
+      <div class="item" style="height:150px;"><br><br><b style="font-size: 32px;">Trainings</b></div>
+      <div class="item" style="height:150px;"><br><b>Total number attended</b><br><br>12 trainings</div>
+      <div class="item" style="height:150px;"><br><b>Date of latest training</b><br><br><li>7 days ago</li></div>
+      <div class="item" style="height:150px;">&nbsp;</div>
+    </vaadin-board-row>
+    <vaadin-board-row>
+      <div class="item" style="height:150px;" board-cols="1">&nbsp;</div>
+      <div class="item" style="height:150px; text-align:left;" board-cols="3">
+        <table border="1">
+          <tbody><tr>
+            <th>User</th>
+            <th>Course 1</th>
+            <th>Course 2</th>
+            <th>Course 3</th>
+            <th>Course 4</th>
+          </tr>
+          <tr>
+            <td>mark.wallace@company.com</td>
+            <td>2017-10-12</td>
+            <td>2017-10-17</td>
+            <td>2017-11-22</td>
+            <td>2017-12-02</td>
+          </tr>
+          <tr>
+            <td>john.smith@company.com</td>
+            <td>2017-06-01</td>
+            <td>2017-10-17</td>
+            <td>2017-11-22</td>
+            <td>2017-11-27</td>
+          </tr>
+          <tr>
+            <td>steve.jobs@company.com</td>
+            <td>2017-06-01</td>
+            <td>2017-07-17</td>
+            <td>2017-08-02</td>
+            <td>2017-09-15</td>
+          </tr>
+        </tbody></table>
+      </div>
+    </vaadin-board-row>
+  </vaadin-board>
+
+  </template>
+
+  <script>
+    class MyDetail extends Polymer.Element {
+      static get is() { return 'my-detail'; }
+    }
+
+    window.customElements.define(MyDetail.is, MyDetail);
+  </script>
+</dom-module>

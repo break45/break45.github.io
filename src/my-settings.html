@@ -21,23 +21,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      .green {
+        height: 35px;
+      }
     </style>
 
     <div class="card">
+      <table>
+        <tbody><tr>
+          <td>Save Settings --&gt; </td>
+          <td><paper-button raised="" class="green">Save</paper-button></td>
+        </tr>
+      </tbody></table>
+    </div>
+    <div class="card">
       <h1>Account selection</h1>
-      <p>Select which Customer accounts to show on dashboard:</p>
-      <p><paper-checkbox>Gap Inc</paper-checkbox></p>
-      <p><paper-checkbox checked="">Canon</paper-checkbox></p>
-      <p><paper-checkbox>Coca-Cola</paper-checkbox></p>
-      <p><paper-checkbox checked="">Pizza Hut</paper-checkbox></p>
-      <p><paper-checkbox>Louis Vuitton</paper-checkbox></p>
-      <p><paper-button raised="">Refresh</paper-button></p>
+      <p>Select which Customer subscriptions to show on dashboard:</p>
+      <p><paper-checkbox>Hubspot Owner</paper-checkbox></p>
+      <p><paper-checkbox checked="">Customer Success Manager</paper-checkbox></p>
+      <p><paper-button raised="">Refresh subscriptions list</paper-button></p>
     </div>
     <div class="card">
       <h1>Hubspot credentials</h1>
       <p><paper-input label="E-mail address" value="omuli@vaadin.com"></paper-input></p>
       <p><paper-input label="Password"></paper-input></p>
       <p><paper-button raised="" class="green">Connect to Hubspot</paper-button></p>
+    </div>
+    <div class="card">
+      <h1>Intercom credentials</h1>
+      <p><paper-input label="E-mail address" value="omuli@vaadin.com"></paper-input></p>
+      <p><paper-input label="Password"></paper-input></p>
+      <p><paper-button raised="" class="green">Connect to Intercom</paper-button></p>
     </div>
   </template>
 

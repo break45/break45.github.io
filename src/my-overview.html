@@ -1,0 +1,109 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/vaadin-grid/all-imports.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-overview">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      .iron-selected {
+        color: #00B4F0;
+        font-weight: 200;
+      }
+      .green {
+        height: 35px;
+      }
+    </style>
+
+    <div class="card">
+      <h1>My Subscriptions</h1>
+      <p>Below is a list of all subscriptions you manage.</p>
+      <paper-toggle-button>Show all subscriptions</paper-toggle-button>
+      <table>
+        <tbody><tr>
+          <td><paper-input label="Search for a subscription:" value="Adibas"></paper-input></td>
+          <td><paper-button raised="" class="green">Search</paper-button></td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <vaadin-grid items="
+          [{&quot;account&quot;: &quot;GAP&quot;, &quot;service&quot;: &quot;Prime&quot;, &quot;status&quot;: &quot;Red&quot;, &quot;expires&quot;: &quot;2017-11-17&quot;, &quot;contacted&quot;: &quot;today&quot;},
+          {&quot;account&quot;: &quot;Adibas&quot;, &quot;service&quot;: &quot;Prime+Training&quot;, &quot;status&quot;: &quot;Green&quot;, &quot;expires&quot;: &quot;2018-01-01&quot;, &quot;contacted&quot;: &quot;yesterday&quot;},
+          {&quot;account&quot;: &quot;Coca-Cola&quot;, &quot;service&quot;: &quot;Pro+Training&quot;, &quot;status&quot;: &quot;Yellow&quot;, &quot;expires&quot;: &quot;2018-02-03&quot;, &quot;contacted&quot;: &quot;5 days&quot;},
+          {&quot;account&quot;: &quot;Pizza Hut&quot;, &quot;service&quot;: &quot;Pro+Training&quot;, &quot;status&quot;: &quot;Yellow&quot;, &quot;expires&quot;: &quot;2020-01-03&quot;, &quot;contacted&quot;: &quot;yesterday&quot;},
+          {&quot;account&quot;: &quot;Burger King&quot;, &quot;service&quot;: &quot;Prime&quot;, &quot;status&quot;: &quot;Yellow&quot;, &quot;expires&quot;: &quot;2018-05-12&quot;, &quot;contacted&quot;: &quot;10 months&quot;},
+          {&quot;account&quot;: &quot;McDonalds&quot;, &quot;service&quot;: &quot;Pro&quot;, &quot;status&quot;: &quot;Yellow&quot;, &quot;expires&quot;: &quot;2018-02-23&quot;, &quot;contacted&quot;: &quot;8 days&quot;},
+          {&quot;account&quot;: &quot;Hese&quot;, &quot;service&quot;: &quot;Pro+Training&quot;, &quot;status&quot;: &quot;Yellow&quot;, &quot;expires&quot;: &quot;2018-02-03&quot;, &quot;contacted&quot;: &quot;5 days&quot;},
+          {&quot;account&quot;: &quot;Pepsi&quot;, &quot;service&quot;: &quot;Pro&quot;, &quot;status&quot;: &quot;Green&quot;, &quot;expires&quot;: &quot;2019-06-30&quot;, &quot;contacted&quot;: &quot;3 days&quot;}]
+          ">
+      <template class="row-details">
+        <div class="details">
+          <p>
+            Seats: 3 / 5<br>
+            On-demand hours: 19.5<br>
+            Latest Support Ticket: 2017-09-10<br>
+            Last Seen in Expert Chat: 2017-10-15<br>
+            Last Training attended: 2017-10-24<br>
+            <a href="detail">open details</a>
+          </p>
+        </div>
+      </template>
+
+      <vaadin-grid-column>
+        <template class="header">Subscription</template>
+        <template>[[item.account]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Product</template>
+        <template>[[item.service]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Status</template>
+        <template>[[item.status]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column width="20px">
+        <template class="header"></template>
+        <template>
+          <paper-checkbox aria-label$="Details" checked="{{expanded}}">Details</paper-checkbox>
+        </template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Expires on</template>
+        <template>[[item.expires]]</template>
+      </vaadin-grid-column>
+      <vaadin-grid-column>
+        <template class="header">Last Contacted</template>
+        <template>[[item.contacted]]</template>
+      </vaadin-grid-column>
+    </vaadin-grid>
+  </template>
+
+  <script>
+    class MyOverview extends Polymer.Element {
+      static get is() { return 'my-overview'; }
+    }
+
+    window.customElements.define(MyOverview.is, MyOverview);
+  </script>
+</dom-module>

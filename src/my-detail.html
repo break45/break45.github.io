@@ -6,7 +6,9 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
---><link rel="import" href="../bower_components/polymer/polymer-element.html">
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/vaadin-board/vaadin-board.html">
 <link rel="import" href="../bower_components/vaadin-grid/all-imports.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
@@ -38,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <vaadin-board>
       <vaadin-board-row>
         <div class="item" style="height:150px;">Selected Subscription<br><br><b style="font-size: 32px;">Adibas</b><br>Prime</div>
-        <div class="item" style="height:150px;">Subscription period<br><br>18 Jan 2017 - <br><b>18 Jan 2018</b></div>
+        <div class="item" style="height:150px;">Subscription period<br><br>18 Jan 2017 - <br/><b>18 Jan 2018</b></div>
         <div class="item" style="height:150px;">Last contacted<br><br><li>17 days ago</li></div>
         <div class="item" style="height:150px; background-color:yellow"><b>Health</b><br><br>Yellow</div>
       </vaadin-board-row>
@@ -55,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <x-axis>
             <categories>TestBench, Designer, Charts, Board, Spreadsheet</categories>
           </x-axis>
-          <y-axis title="">
+          <y-axis title>
             <categories>mark.wallace@company.com, john.smith@company.com, steve.jobs@company.com</categories>
           </y-axis>
           <color-axis min="0" min-color="#00b4f0" max-color="#ff3a49"></color-axis>
@@ -64,7 +66,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <heatmap>
               <data-labels enabled="true" color="#000000"></data-labels>
               <tooltip>
-                <point-format>Last license server ping on 2017-10-23<br>Used 16 times / 1 computers</point-format>
+                <point-format>Last license server ping on 2017-10-23</point-format>
+                <footer-format>&nbsp;&nbsp;- Used 16 times / 1 computers</footer-format>
               </tooltip>
             </heatmap>
           </plot-options>
@@ -102,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <x-axis>
     <categories>Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec</categories>
   </x-axis>
-  <y-axis title="">
+  <y-axis title>
     <categories>mark.wallace@company.com, john.smith@company.com, steve.jobs@company.com</categories>
   </y-axis>
   <color-axis min="0" min-color="#ff3a49" max-color="#00b4f0"></color-axis>
@@ -140,27 +143,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </vaadin-board-row>
     </vaadin-board>
 
-    <vaadin-grid items="
-          [{&quot;title&quot;: &quot;Polymer 2 borken&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;today&quot;, &quot;hours&quot;: &quot;5 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
-          {&quot;title&quot;: &quot;Upgrade woes&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;yesterday&quot;, &quot;hours&quot;: &quot;3.5 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
-          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;0.2 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
-          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;0.5 h&quot;, &quot;rating&quot;: &quot;3/5&quot;},
-          {&quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;, &quot;hours&quot;: &quot;11 h&quot;, &quot;rating&quot;: &quot;2/5&quot;},
-          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;1 h&quot;, &quot;rating&quot;: &quot;5/5&quot;},
-          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;2 h&quot;, &quot;rating&quot;: &quot;4/5&quot;},
-          {&quot;title&quot;: &quot;Too many hours to spend&quot;, &quot;status&quot;: &quot;new&quot;, &quot;updated&quot;: &quot;weeks and weeks&quot;, &quot;hours&quot;: &quot;3 h&quot;, &quot;rating&quot;: &quot;3/5&quot;},
-          {&quot;title&quot;: &quot;Grid borken again&quot;, &quot;status&quot;: &quot;waiting for estimate approval&quot;, &quot;updated&quot;: &quot;5 days&quot;, &quot;hours&quot;: &quot;5 h&quot;, &quot;rating&quot;: &quot;2/5&quot;},
-          {&quot;title&quot;: &quot;Too much cash&quot;, &quot;status&quot;: &quot;waiting for details&quot;, &quot;updated&quot;: &quot;3 days&quot;, &quot;hours&quot;: &quot;4 h&quot;, &quot;rating&quot;: &quot;1/5&quot;}]
-          ">
+    <vaadin-grid items='
+          [{"title": "Polymer 2 borken", "status": "waiting for estimate approval", "updated": "today", "hours": "5 h", "rating": "5/5"},
+          {"title": "Upgrade woes", "status": "new", "updated": "yesterday", "hours": "3.5 h", "rating": "5/5"},
+          {"title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days", "hours": "0.2 h", "rating": "5/5"},
+          {"title": "Too much cash", "status": "waiting for details", "updated": "3 days", "hours": "0.5 h", "rating": "3/5"},
+          {"title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks", "hours": "11 h", "rating": "2/5"},
+          {"title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days", "hours": "1 h", "rating": "5/5"},
+          {"title": "Too much cash", "status": "waiting for details", "updated": "3 days", "hours": "2 h", "rating": "4/5"},
+          {"title": "Too many hours to spend", "status": "new", "updated": "weeks and weeks", "hours": "3 h", "rating": "3/5"},
+          {"title": "Grid borken again", "status": "waiting for estimate approval", "updated": "5 days", "hours": "5 h", "rating": "2/5"},
+          {"title": "Too much cash", "status": "waiting for details", "updated": "3 days", "hours": "4 h", "rating": "1/5"}]
+          '>
       <template class="row-details">
         <div class="details">
-          <p>Hello John,<br>
-We use the Java EE-CDI framework.<br>
-Yes, we want the jobs to be persistent so we can see status as you described (ie see status of email if server goes down).<br>
-If you are refereeing to a 'live' demo, that's fine. Instructions on how to use it will be fine for now.<br>
-<br>
-Thanks<br>
-<br>
+          <p>Hello John,<br/>
+We use the Java EE-CDI framework.<br/>
+Yes, we want the jobs to be persistent so we can see status as you described (ie see status of email if server goes down).<br/>
+If you are refereeing to a 'live' demo, that's fine. Instructions on how to use it will be fine for now.<br/>
+<br/>
+Thanks<br/>
+<br/>
 Becky</p>
         </div>
       </template>
@@ -204,7 +207,7 @@ Becky</p>
       <div class="item" style="height:150px;" board-cols="1">&nbsp;</div>
       <div class="item" style="height:150px; text-align:left;" board-cols="3">
         <table border="1">
-          <tbody><tr>
+          <tr>
             <th>User</th>
             <th>Course 1</th>
             <th>Course 2</th>
@@ -232,7 +235,7 @@ Becky</p>
             <td>2017-08-02</td>
             <td>2017-09-15</td>
           </tr>
-        </tbody></table>
+        </table>
       </div>
     </vaadin-board-row>
   </vaadin-board>

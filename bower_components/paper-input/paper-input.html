@@ -192,10 +192,7 @@ style this element.
       var template = Polymer.DomModule.import('paper-input', 'template');
       var inputTemplate = Polymer.DomModule.import('paper-input', 'template#' + version);
       var inputPlaceholder = template.content.querySelector('#template-placeholder');
-      if (inputPlaceholder) {
-        inputPlaceholder.parentNode.replaceChild(inputTemplate.content, inputPlaceholder);
-      }
-      // else it's already been processed, probably in superclass
+      inputPlaceholder.parentNode.replaceChild(inputTemplate.content, inputPlaceholder);
     },
 
     /**

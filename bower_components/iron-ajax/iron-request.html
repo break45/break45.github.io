@@ -81,11 +81,6 @@ iron-request can be used to perform XMLHttpRequests.
       /**
        * A promise that resolves when the `xhr` response comes back, or rejects
        * if there is an error before the `xhr` completes.
-       * The resolve callback is called with the original request as an argument.
-       * By default, the reject callback is called with an `Error` as an argument.
-       * If `rejectWithRequest` is true, the reject callback is called with an 
-       * object with two keys: `request`, the original request, and `error`, the 
-       * error object.
        *
        * @type {Promise}
        */
@@ -171,11 +166,10 @@ iron-request can be used to perform XMLHttpRequests.
     },
 
     /**
-     * Sends an HTTP request to the server and returns a promise (see the `completes`
-     * property for details).
+     * Sends an HTTP request to the server and returns the XHR object.
      *
      * The handling of the `body` parameter will vary based on the Content-Type
-     * header. See the docs for iron-ajax's `body` property for details.
+     * header. See the docs for iron-ajax's `body` param for details.
      *
      * @param {{
      *   url: string,
@@ -185,19 +179,16 @@ iron-request can be used to perform XMLHttpRequests.
      *   headers: (Object|undefined),
      *   handleAs: (string|undefined),
      *   jsonPrefix: (string|undefined),
-     *   withCredentials: (boolean|undefined),
-     *   timeout: (Number|undefined),
-     *   rejectWithRequest: (boolean|undefined)}} options -
-     *   - url The url to which the request is sent.
-     *   - method The HTTP method to use, default is GET.
-     *   - async By default, all requests are sent asynchronously. To send synchronous requests,
+     *   withCredentials: (boolean|undefined)}} options -
+     *     url The url to which the request is sent.
+     *     method The HTTP method to use, default is GET.
+     *     async By default, all requests are sent asynchronously. To send synchronous requests,
      *         set to false.
-     *   -  body The content for the request body for POST method.
-     *   -  headers HTTP request headers.
-     *   -  handleAs The response type. Default is 'text'.
-     *   -  withCredentials Whether or not to send credentials on the request. Default is false.
-     *   -  timeout - Timeout for request, in milliseconds.
-     *   -  rejectWithRequest Set to true to include the request object with promise rejections.
+     *     body The content for the request body for POST method.
+     *     headers HTTP request headers.
+     *     handleAs The response type. Default is 'text'.
+     *     withCredentials Whether or not to send credentials on the request. Default is false.
+     *   timeout: (Number|undefined)
      * @return {Promise}
      */
     send: function(options) {
@@ -213,7 +204,7 @@ iron-request can be used to perform XMLHttpRequests.
           loaded: progress.loaded,
           total: progress.total
         });
-      }.bind(this));
+      }.bind(this))
 
       xhr.addEventListener('error', function(error) {
         this._setErrored(true);
@@ -450,12 +441,11 @@ iron-request can be used to perform XMLHttpRequests.
     _wwwFormUrlEncodePiece: function(str) {
       // Spec says to normalize newlines to \r\n and replace %20 spaces with +.
       // jQuery does this as well, so this is likely to be widely compatible.
-      if (str === null || str === undefined || !str.toString) {
+      if (str === null) {
         return '';
       }
-
       return encodeURIComponent(str.toString().replace(/\r?\n/g, '\r\n'))
-        .replace(/%20/g, '+');
+          .replace(/%20/g, '+');
     },
 
     /**
